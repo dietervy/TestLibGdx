@@ -20,29 +20,23 @@ public class Test implements ApplicationListener {
     private ShapeRenderer shapeRenderer;
     private OrthographicCamera camera;
     private CatmullRomSpline catmullRomSpline;
-    private List<Vector3> pathList;
-    private List<Vector3> normalList;
-
+    private Path path;
+    int i =0;
     @Override
 	public void create () {
 		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
 		batch = new SpriteBatch();
         shapeRenderer=new ShapeRenderer();
+        long t1 = System.currentTimeMillis();
         catmullRomSpline = new CatmullRomSpline();
-        catmullRomSpline.add(new Vector3(90,90,0));
+        catmullRomSpline.add(new Vector3(600,150,0));
         catmullRomSpline.add(new Vector3(100,100,0));
         catmullRomSpline.add(new Vector3(400,500,0));
-        catmullRomSpline.add(new Vector3(300,250,0));
-        catmullRomSpline.add(new Vector3(600,400,0));
-        catmullRomSpline.add(new Vector3(700,50,0));
-        catmullRomSpline.add(new Vector3(710,60,0));
-        pathList = catmullRomSpline.getPath(NUM_POINTS);
-        normalList = catmullRomSpline.getTangentNormals2D(NUM_POINTS);
-        //convert to angle
-        // atan2(y,x) -> angle ten opzichte van x
-        //atan2(x,y) -> tov y
-        // multiply by 180/pi -> degrees
-        System.out.println(normalList);
+        catmullRomSpline.add(new Vector3(700,250,0));
+        catmullRomSpline.add(new Vector3(600,150,0));
+        catmullRomSpline.add(new Vector3(100,100,0));
+        catmullRomSpline.add(new Vector3(400,500,0));
+        path = new Path(catmullRomSpline,20);
 	}
 
 	@Override
@@ -53,22 +47,15 @@ public class Test implements ApplicationListener {
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Point);
-        shapeRenderer.setColor(Color.RED);
-
-//        shapeRenderer.line(10, 10, 50, 50);
-        for(Vector3 point:pathList){
-            shapeRenderer.point(point.x,point.y,point.z);
-
-        }
-        shapeRenderer.end();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.DARK_GRAY);
-        for(int i=0;i<84;i++){
-            shapeRenderer.line(pathList.get(i).x,pathList.get(i).y,pathList.get(i).x+20*normalList.get(i).x,pathList.get(i).y+20*normalList.get(i).y);
-        }
-        shapeRenderer.end();
+        path.render();
+//        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+//        shapeRenderer.circle(pathList.get(i).x,pathList.get(i).y,5);
+//        if(i>83){
+//            i= 0;
+//        } else {
+//            i++;
+//        }
+//        shapeRenderer.end();
 
 	}
 
