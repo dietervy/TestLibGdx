@@ -28,6 +28,22 @@ public class Path {
         nrOfPoints = nrOfInterval*(catmullRomSpline.getControlPoints().size()-3) + catmullRomSpline.getControlPoints().size()-2;
     }
 
+    public int getNrOfPoints() {
+        return nrOfPoints;
+    }
+
+    public void setNrOfPoints(int nrOfPoints) {
+        this.nrOfPoints = nrOfPoints;
+    }
+
+    public int getNrOfInterval() {
+        return nrOfInterval;
+    }
+
+    public void setNrOfInterval(int nrOfInterval) {
+        this.nrOfInterval = nrOfInterval;
+    }
+
     public CatmullRomSpline getCatmullRomSpline() {
         return catmullRomSpline;
     }
