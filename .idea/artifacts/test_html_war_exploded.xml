@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="test-html:war exploded">
+    <output-path>$PROJECT_DIR$/html/target/test-html-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="test-html/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="test-html" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="test-core-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="test-core" />
+          </element>
+          <element id="library" level="project" name="Maven: com.badlogic.gdx:gdx:0.9.9-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.badlogic.gdx:gdx-backend-gwt:0.9.9-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.badlogic.gdx:gdx:sources:0.9.9-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.badlogic.gdx:gdx-backend-gwt:sources:0.9.9-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.0" />
+        </element>
+      </element>
+      <element id="gwt-compiler-output" facet="test-html/gwt/GWT" />
+    </root>
+  </artifact>
+</component>
